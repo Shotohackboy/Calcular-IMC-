@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de IMC</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de IMC</h1>
+        <input type="number" id="peso" placeholder="Digite seu peso em kg">
+        <input type="number" id="altura" placeholder="Digite sua altura em metros">
+        <button onclick="calcularIMC()">Calcular IMC</button>
+        <p id="resultado"></p>
+    </div>
+
+    <script>
+        function calcularIMC() {
+            const peso = document.getElementById('peso').value;
+            const altura = document.getElementById('altura').value;
+            const imc = peso / (altura * altura);
+
+            let resultado = '';
+
+            if (imc < 18.5) {
+                resultado = `Seu IMC é ${imc.toFixed(2)} e você está abaixo do peso.`;
+            } else if (imc >= 18.5 && imc < 24.9) {
+                resultado = `Seu IMC é ${imc.toFixed(2)} e você está com o peso normal.`;
+            } else if (imc >= 25 && imc < 29.9) {
+                resultado = `Seu IMC é ${imc.toFixed(2)} e você está com sobrepeso.`;
+            } else {
+                resultado = `Seu IMC é ${imc.toFixed(2)} e você está obeso.`;
+            }
+
+            document.getElementById('resultado').innerText = resultado;
+        }
+    </script>
+</body>
+</html>
