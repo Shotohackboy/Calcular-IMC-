@@ -1,0 +1,31 @@
+```python
+import random
+import string
+
+url_mapping = {}
+
+def generate_short_url():
+    characters = string.ascii_letters + string.digits
+    short_url = ''.join(random.choice(characters) for i in range(6))
+    return short_url
+
+def shorten_url(long_url):
+    short_url = generate_short_url()
+    url_mapping[short_url] = long_url
+    return f"Short URL: short.com/{short_url}"
+
+def redirect(short_url):
+    if short_url in url_mapping:
+        return f"Redirecting to: {url_mapping[short_url]}"
+    else:
+        return "Short URL not found"
+
+# User input
+long_url = input("Enter the long URL: ")
+short_url = shorten_url(long_url)
+print(short_url)
+
+short_url_input = input("Enter the short URL to redirect: ")
+print(redirect(short_url_input))
+```
+
